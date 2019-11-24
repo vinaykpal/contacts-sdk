@@ -1,3 +1,0 @@
--- Configuring done
--- Generating done
--- Build files have been written to: /home/t0158551/Documents/Study/interview/twilio/twilio-sdk-coding-challenge-android-0.1.0/contacts/.cxx/cmake/debug/x86
