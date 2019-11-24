@@ -16,10 +16,10 @@ class Contacts {
     static std::string getListContacts();
     static void updateContacts();
     static void addNewContact(std::string);
+    static void startUpdateTimer();
 
     static std::string createJsonString();
     static std::vector<std::string> contactsList;
-
 
  private:
 

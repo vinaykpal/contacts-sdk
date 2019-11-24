@@ -58,10 +58,13 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         initiater.addListener(this);
         Contacts.setInitiaterCtx(initiater);
 
+        Contacts.registerCallback();//register to gt callback from native
+
         getContactLists();
         recyclerViewUpdate();
 
-        Contacts.registerCallback();//register to gt callback from native
+
+        Contacts.startUpdateTimer(); //start contact update timer in native
     }
 
     @Override

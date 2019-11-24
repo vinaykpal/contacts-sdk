@@ -26,6 +26,13 @@ namespace jni {
         return jstr;
     }
 
+    extern "C" JNIEXPORT void JNICALL Java_com_contacts_Contacts_nativeStartUpdateTimer(JNIEnv *env,
+                                                                                    jclass jclass) {
+        std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
+        contacts::Contacts::startUpdateTimer();
+    }
+
+
     extern "C" JNIEXPORT jstring JNICALL
     Java_com_contacts_Contacts_nativeGetListContacts(JNIEnv *env,
                                                      jclass jclass) {
@@ -106,7 +113,7 @@ namespace jni {
 
 
         if (g_mid == NULL) {
-            LOGD("Unable to get method ref");
+            LOGD("Unable texampleo get method ref");
         } else {
             LOGD("Found method-ID");
         }

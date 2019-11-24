@@ -36,6 +36,10 @@ public class Contacts {
         nativeAddNewCotact(newContact);
     }
 
+    public static void startUpdateTimer() {
+        nativeStartUpdateTimer();
+    }
+
     public static void registerCallback() {
         register();
     }
@@ -43,8 +47,8 @@ public class Contacts {
     private static native String nativeGetVersion();
     public static native void nativeAddNewCotact(String newContact  );
 
-
     public static native void register();
+    public static native void nativeStartUpdateTimer();
 
     public static void callback(String val) {
         // do stuff

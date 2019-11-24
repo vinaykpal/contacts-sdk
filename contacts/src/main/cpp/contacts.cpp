@@ -54,17 +54,19 @@ std::string contacts::Contacts::getVersion() {
     return kSdkVersion;
 }
 
+void contacts::Contacts::startUpdateTimer() {
+
+        LOGD("start Timer:");
+        CTimerTest test;
+        test.Test();
+
+}
+
 std::string contacts::Contacts::getListContacts() {
     LOGD("Inside Contacts getListContacts");
 
-    //timer start
-    LOGD("start Timer:");
-    CTimerTest test;
-    test.Test();
-    //timer end
-
     return createJsonString();
-    // return kContactsList + "newcontact";
+
 }
 
 void contacts::Contacts::addNewContact(std::string newContact) {
@@ -103,11 +105,5 @@ std::string contacts::Contacts::createJsonString() {
     return s + closedBracket;
 }
 
-
-/*void timerupdateContact() {
-
-    auto timeOut = std::chrono::system_clock::now() + 1000;
-    auto start = std::chrono::system_clock::now();
-}*/
 
 }

@@ -11,6 +11,8 @@ namespace jni {
 extern "C" JNIEXPORT jstring JNICALL Java_com_contacts_Contacts_nativeGetVersion(JNIEnv *env,
                                                                                  jclass jclass);
 
+    extern "C" JNIEXPORT void JNICALL Java_com_contacts_Contacts_nativeStartUpdateTimer(JNIEnv *env,
+                                                                                           jclass jclas);
 extern "C" JNIEXPORT jstring JNICALL Java_com_contacts_Contacts_nativeGetListContacts(JNIEnv *env,
                                                                                      jclass jclass);
 

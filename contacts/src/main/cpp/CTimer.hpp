@@ -25,7 +25,7 @@ void CTimer<T>::TimerThreadFunc(union sigval arg)
 template <class T>
 CTimer<T>::CTimer(T * pHandler):m_Handler(pHandler),
                                 m_TimerType(TimerType::MULTI_SHOT),
-                                m_nInterval(10000),
+                                m_nInterval(10),
                                 m_TimerID(NULL)
 {
 
@@ -44,9 +44,9 @@ void  CTimer<T>::SetTimerType(TimerType type)
     m_TimerType = type;
 }
 template <class T>
-void  CTimer<T>::SetInterval(long msec)
+void  CTimer<T>::SetInterval(long sec)
 {
-    m_nInterval = msec;
+    m_nInterval = sec;
 }
 template <class T>
 int  CTimer<T>::GetInterval()
@@ -55,10 +55,10 @@ int  CTimer<T>::GetInterval()
 }
 
 template <class T>
-void CTimer<T>::Start(long msec)
+void CTimer<T>::Start(long sec)
 {
     StopTimer();
-    StartTimer(msec);
+    StartTimer(sec);
     m_Handler->OnStart();
 }
 
@@ -77,8 +77,7 @@ void CTimer<T>::StopTimer() {
         try {
             Stop();
         } catch(contacts::CTimerException& ex)
-        {   //Catching exception if any during stoping of alraedy started timer
-            //cout<<"Exception in stopping the timer."<<ex.what();
+        {
         }
     }
 }
@@ -98,54 +97,21 @@ void CTimer<T>::Stop()
 
 template <class T>
 void CTimer<T>::HandleTimerCreateError() const {
-    /*switch(errno)
-    {
-        case EAGAIN:
-            throw CTimerException("Temporary error during kernel allocation of timer structures");
-            break;
-        case EINVAL:
-            throw CTimerException("Invalid parameter passed");
-            break;
-        case ENOMEM:
-            throw CTimerException("Could not allocate memory.");
-            break;
-        default:
-            throw CTimerException("Unknown exception occurred in timer creation");
-            break;
-    }*/
+
 }
 
 template <class T>
 void CTimer<T>::HandleTimerSetTimeError() const {
-  /*  switch(errno)
-    {
-        case EFAULT:
-            throw CTimerException("Invalid internal data passed");
-            break;
-        case EINVAL:
-            throw CTimerException("Invalid timer ");
-            break;
-        default:
-            throw CTimerException("Unknown exception occurred in setting the timer value");
-            break;
-    }*/
+
 }
 
 template <class T>
 void CTimer<T>::HandleTimerDeleteError() const {
-  /*  switch(errno)
-    {
-        case EINVAL:
-            throw CTimerException("Invalid timer");
-            break;
-        default:
-            throw CTimerException("Unknown exception occurred in stopping the timer");
-            break;
-    }*/
+
 }
 
 template <class T>
-void CTimer<T>::StartTimer(long msec) {
+void CTimer<T>::StartTimer(long sec) {
 
     int status;
     struct itimerspec ts;
@@ -160,17 +126,10 @@ void CTimer<T>::StartTimer(long msec) {
     se.sigev_notify_function = TimerThreadFunc;
     se.sigev_notify_attributes = NULL;
 
-    if (m_TimerType == TimerType::MULTI_SHOT) {
-        ts.it_value.tv_sec = 0;
-        ts.it_value.tv_nsec = 1;
-        ts.it_interval.tv_sec = msec * MILLISECONDS_TO_NANOSECONDS_FACTOR / 1000000000;
-        ts.it_interval.tv_nsec = (msec * MILLISECONDS_TO_NANOSECONDS_FACTOR) % 1000000000;
-    } else {
-        ts.it_value.tv_sec = msec * MILLISECONDS_TO_NANOSECONDS_FACTOR / 1000000000;
-        ts.it_value.tv_nsec = (msec * MILLISECONDS_TO_NANOSECONDS_FACTOR) % 1000000000;
-        ts.it_interval.tv_sec = 0;
-        ts.it_interval.tv_nsec = 0;
-    }
+    ts.it_value.tv_sec = sec;
+    ts.it_value.tv_nsec = 0;
+    ts.it_interval.tv_sec = sec;
+    ts.it_interval.tv_nsec = 0;
 
 
     status = timer_create(CLOCK_REALTIME, &se, &m_TimerID);

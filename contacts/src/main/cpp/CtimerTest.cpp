@@ -2,6 +2,7 @@
 //#include<iostream>
 #include "CtimerTest.h"
 #include "CTimer.h"
+#include "contacts.h"
 
 #include <android/log.h>
 #define  LOG_TAG    "contacs-sdk"
@@ -14,12 +15,10 @@ namespace contacts {
 void contacts::CTimerTest::OnStart()
 {
     LOGD("Timer started");
-    //std::cout<<"Timer started";
 }
 void contacts::CTimerTest::OnStop()
 {
     LOGD("Timer stop");
-    //std::cout<<"Timer Stopped";
 }
 void contacts::CTimerTest::OnTimeOut()
 {
@@ -30,17 +29,14 @@ void contacts::CTimerTest::OnTimeOut()
 void contacts::CTimerTest::Test()
 {
     CTimer<CTimerTest> timer(this);
-    timer.SetTimerType(TimerType::MULTI_SHOT);
-    timer.SetInterval(30000);
+    timer.SetInterval(30);//seconds
     try {
-      //  std::cout<<"Timer start";
         LOGD("Timer start request");
         timer.Start();
     } catch(CTimerException& ex)
     {
-        //std::cout<<"Timer exception:"<<ex.what();
+        LOGD("Timer exception:");
     }
-
-   // sleep(60);
 }
+
 }
