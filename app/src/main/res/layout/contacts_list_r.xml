@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_contactFirstName"
+        android:text="First"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_contactLastName"
+        android:text="Last"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_contactFirstName"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_contactPhone"
+        android:text="+1234567890"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_contactLastName"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+</RelativeLayout>

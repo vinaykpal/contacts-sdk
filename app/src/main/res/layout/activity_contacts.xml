@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.contacts.app.ContactsActivity">
+
+    <Button
+        android:id="@+id/buttonAddGoodContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addGoodContact"
+        android:text="Add Good contact"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/buttonAddBadContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addBadContact"
+        android:text="Add Bad contact"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/buttonRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="refreshButton"
+        android:layout_marginTop="100dp"
+        android:text="refresh Contact List"
+        android:layout_alignParentRight="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contacts_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+</RelativeLayout>

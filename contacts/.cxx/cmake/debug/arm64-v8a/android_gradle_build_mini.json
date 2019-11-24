@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/home/t0158551/Documents/Study/interview/twilio/twilio-sdk-coding-challenge-android-0.1.0/contacts/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/opt/android/android-sdk-linux_x86/cmake/3.6.4111459/bin/cmake --build /home/t0158551/Documents/Study/interview/twilio/twilio-sdk-coding-challenge-android-0.1.0/contacts/.cxx/cmake/debug/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "contacts_so-Debug-arm64-v8a": {
+      "artifactName": "contacts_so",
+      "buildCommand": "/opt/android/android-sdk-linux_x86/cmake/3.6.4111459/bin/cmake --build /home/t0158551/Documents/Study/interview/twilio/twilio-sdk-coding-challenge-android-0.1.0/contacts/.cxx/cmake/debug/arm64-v8a --target contacts_so",
+      "abi": "arm64-v8a",
+      "output": "/home/t0158551/Documents/Study/interview/twilio/twilio-sdk-coding-challenge-android-0.1.0/contacts/build/intermediates/cmake/debug/obj/arm64-v8a/libcontacts_so.so"
+    }
+  }
+}

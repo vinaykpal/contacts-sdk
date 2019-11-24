@@ -1,0 +1,22 @@
+# ninja log v5
+873	1072	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	6a67819869079906
+2	1579	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts_jni.cpp.o	80865dfd9bc29bd3
+1	1056	0	CMakeFiles/contacts_so.dir/src/main/cpp/contact.cpp.o	50fba4bc12508ffe
+2	873	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts.cpp.o	ec484d87ee622de9
+1	814	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts.cpp.o	ec484d87ee622de9
+814	1060	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	6a67819869079906
+2	1325	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts.cpp.o	ec484d87ee622de9
+2	1653	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts_jni.cpp.o	80865dfd9bc29bd3
+1653	1859	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	6a67819869079906
+1	927	0	CMakeFiles/contacts_so.dir/src/main/cpp/CtimerTest.cpp.o	94493d22a6e1c3ef
+2	1097	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts.cpp.o	ec484d87ee622de9
+1097	1303	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	626a4c1b994e452f
+8	715	0	CMakeFiles/contacts_so.dir/src/main/cpp/CtimerTest.cpp.o	94493d22a6e1c3ef
+715	916	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	626a4c1b994e452f
+1	595	0	CMakeFiles/contacts_so.dir/src/main/cpp/CtimerTest.cpp.o	94493d22a6e1c3ef
+595	829	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	626a4c1b994e452f
+2	1644	0	CMakeFiles/contacts_so.dir/src/main/cpp/contact.cpp.o	50fba4bc12508ffe
+2	1830	0	CMakeFiles/contacts_so.dir/src/main/cpp/CtimerTest.cpp.o	94493d22a6e1c3ef
+2	2222	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts.cpp.o	ec484d87ee622de9
+2	2543	0	CMakeFiles/contacts_so.dir/src/main/cpp/contacts_jni.cpp.o	80865dfd9bc29bd3
+2543	2779	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libcontacts_so.so	626a4c1b994e452f
