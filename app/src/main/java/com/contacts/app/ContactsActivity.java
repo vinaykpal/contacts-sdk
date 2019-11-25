@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -63,7 +64,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         getContactLists();
         recyclerViewUpdate();
 
-
         Contacts.startUpdateTimer(); //start contact update timer in native
     }
 
@@ -79,9 +79,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         removeOldContact(oldContact);
         addNewContact(newContact);
 
-        recyclerViewUpdate();
-
-        showToast("Contact updated");
     }
 
     private void removeOldContact(String oldContact) {
@@ -143,13 +140,17 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
                 phoneNum.add(jsonObject.optString("phone"));
             }
 
-            if((indxFirstName == indxLastName) && (indxFirstName == indxPhone)) {
+            firstName.add(jsonObject.optString("first"));
+            lastName.add(jsonObject.optString("last"));
+            phoneNum.add(jsonObject.optString("phone"));
+
+            /*if((indxFirstName == indxLastName) && (indxFirstName == indxPhone)) {
                 Log.i(TAG, "contact exists!");
             } else {
                 firstName.add(jsonObject.optString("first"));
                 lastName.add(jsonObject.optString("last"));
                 phoneNum.add(jsonObject.optString("phone"));
-            }
+            }*/
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -203,12 +204,21 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     }
 
     /** Called when the user touches the refresh List button */
+    public void getListButton(View view)
+    {
+        // Do something in response to button click
+        Log.i(TAG, "getListButton button");
+
+        getContactLists();
+        recyclerViewUpdate();
+
+    }
+    /** Called when the user touches the refresh List button */
     public void refreshButton(View view)
     {
         // Do something in response to button click
         Log.i(TAG, "refreshButton button");
 
-        getContactLists();
         recyclerViewUpdate();
 
     }
@@ -247,7 +257,7 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         showToast(adapter.getItem(position).get(0) + " " + adapter.getItem(position).get(1) +" number is " + adapter.getItem(position).get(2));
     }
 
-    private void showToast(String msg) {
+    public void showToast(String msg) {
         Toast.makeText(this,  msg, Toast.LENGTH_SHORT).show();
     }
 

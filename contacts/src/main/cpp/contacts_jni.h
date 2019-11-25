@@ -26,6 +26,11 @@ extern "C" JNIEXPORT void JNICALL Java_com_contacts_Contacts_register(JNIEnv * e
     void callbackContactAddedStatus(std::string val);
     void callbackContactUpdated(std::string newContact, std::string oldContact);
 
+    // cached refs for later callbacks
+    static JavaVM * g_vm;
+    static jclass g_obj;
+    static jmethodID g_mid, g_mid_contactAddedStatus, g_mid_contactupdatedStatus;
+    static JNIEnv* g_env;
 }
 }
 

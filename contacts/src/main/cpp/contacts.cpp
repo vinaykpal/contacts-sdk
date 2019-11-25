@@ -31,7 +31,7 @@ const std::string Contacts::kContactsList = "[{\"first\" : \"Alexander\",\"last\
 
     std::string newval = "{\"first\" : \"John\",\"last\" : \"Baird\",\"phone\" : \"+4408458591006\"}";
 
-    std::string newContactUpdate = "{\"first\" : \"John\",\"last\" : \"PAL\",\"phone\" : \"+000000000\"}";
+    std::string newContactUpdate = "{\"first\" : \"Bill\",\"last\" : \"Mai\",\"phone\" : \"+000000000\"}";
     std::string oldContactUpdate = "{\"first\" : \"John\",\"last\" : \"Baird\",\"phone\" : \"+4408458591006\"}";
 
 
@@ -60,6 +60,10 @@ void contacts::Contacts::startUpdateTimer() {
         CTimerTest test;
         test.Test();
 
+}
+
+contacts::Contacts* contacts::Contacts::getCtx() {
+    return this;
 }
 
 std::string contacts::Contacts::getListContacts() {

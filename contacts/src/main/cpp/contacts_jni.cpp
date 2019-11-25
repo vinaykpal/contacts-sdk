@@ -81,11 +81,13 @@ namespace jni {
         contacts::Contacts::addNewContact(addNewContact);
     }
 
-    // cached refs for later callbacks
-    JavaVM * g_vm;
-    jclass g_obj;
-    jmethodID g_mid, g_mid_contactAddedStatus, g_mid_contactupdatedStatus;
-    JNIEnv* g_env;
+    JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* aReserved)
+    {
+        // cache java VM
+        LOGD("VP #### JNI_OnLoad");
+        g_vm = vm;
+
+    }
 
     extern "C" JNIEXPORT void JNICALL Java_com_contacts_Contacts_register
             (JNIEnv * env, jclass obj) {
@@ -94,6 +96,7 @@ namespace jni {
         // (local will die after this method call)
         g_obj = reinterpret_cast<jclass>(env->NewGlobalRef(obj));
         g_env = env;
+        env->GetJavaVM(&g_vm);
 
         LOGD("in register jni env:");
         // save refs for callback
@@ -161,13 +164,31 @@ namespace jni {
 
         myNewEnv->CallStaticVoidMethod(g_obj, g_mid_contactAddedStatus, jstringVal);
 
+       // jvm->DetachCurrentThread();
     }
 
 
     void callbackContactUpdated (std::string newContact, std::string oldContact) {
         JavaVM* jvm;
 
-        g_env->GetJavaVM(&jvm);
+        //g_env->GetJavaVM(&jvm);
+
+        //***
+
+         JNIEnv * g_env;
+        // double check it's all ok
+        int getEnvStat = g_vm->GetEnv((void **)&g_env, JNI_VERSION_1_6);
+        if (getEnvStat == JNI_EDETACHED) {
+            //std::cout << "GetEnv: not attached" << std::endl;
+            if (g_vm->AttachCurrentThread((JNIEnv **) &g_env, NULL) != 0) {
+                LOGD("atached");
+            }
+        } else if (getEnvStat == JNI_OK) {
+            //
+        } else if (getEnvStat == JNI_EVERSION) {
+            //std::cout << "GetEnv: version not supported" << std::endl;
+        }
+        //****
 
         //convert string
         const char * charNewContact = newContact.c_str();
@@ -182,9 +203,11 @@ namespace jni {
 
         args.name = NULL; // you might want to give the java thread a name
         args.group = NULL; // you might want to assign the java thread to a ThreadGroup
-        jvm->AttachCurrentThread((JNIEnv**)&myNewEnv, &args);
+
+        g_vm->AttachCurrentThread((JNIEnv**)&myNewEnv, &args);
 
         myNewEnv->CallStaticVoidMethod(g_obj, g_mid_contactupdatedStatus, jstringNewContact, jstringOldContact);
+        //g_vm->DetachCurrentThread();
 
     }
     void callback(std::string strVal) {

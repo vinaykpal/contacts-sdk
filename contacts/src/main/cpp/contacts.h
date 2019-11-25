@@ -10,8 +10,6 @@ namespace contacts {
 class Contacts {
  public:
 
-    Contacts();
-
     static std::string getVersion();
     static std::string getListContacts();
     static void updateContacts();
@@ -20,6 +18,8 @@ class Contacts {
 
     static std::string createJsonString();
     static std::vector<std::string> contactsList;
+
+    contacts::Contacts* getCtx();
 
  private:
 

@@ -5,6 +5,8 @@
 #ifndef MYAPPLICATION_CTIMERTEST_H
 #define MYAPPLICATION_CTIMERTEST_H
 
+#include "contacts.h"
+
 namespace contacts {
     class CTimerTest {
     public:
@@ -15,6 +17,8 @@ namespace contacts {
         void OnTimeOut();
 
         void Test();
+
+
 
     };
 }
