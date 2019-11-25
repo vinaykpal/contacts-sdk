@@ -1,6 +1,6 @@
 
 //#include<iostream>
-#include "CtimerTest.h"
+#include "Updatetimer.h"
 #include "CTimer.h"
 #include "contacts.h"
 
@@ -12,15 +12,15 @@
 
 namespace contacts {
 
-void contacts::CTimerTest::OnStart()
+void contacts::Updatetimer::OnStart()
 {
     LOGD("Timer started");
 }
-void contacts::CTimerTest::OnStop()
+void contacts::Updatetimer::OnStop()
 {
     LOGD("Timer stop");
 }
-void contacts::CTimerTest::OnTimeOut()
+void contacts::Updatetimer::OnTimeOut()
 {
     LOGD("Timer event Triggered");
     contacts::Contacts callerCtx;
@@ -28,19 +28,14 @@ void contacts::CTimerTest::OnTimeOut()
 
 }
 
-void contacts::CTimerTest::Test()
+void contacts::Updatetimer::Test()
 {
-    //static contacts::Contacts callerCtx;
-    //contacts::Contacts ctx = ctx.getCtx();
-    //contacts::CTimerTest::callerCtx = ctx;
-
-
-    CTimer<CTimerTest> timer(this);
-    timer.SetInterval(30);//seconds
+    CTimer<Updatetimer> timer(this);
+    timer.SetInterval(30);//seconds interval
     try {
         LOGD("Timer start request");
         timer.Start();
-    } catch(CTimerException& ex)
+    } catch(UpdatetimerException& ex)
     {
         LOGD("Timer exception:");
     }

@@ -50,11 +50,6 @@ public class Contacts {
     public static native void register();
     public static native void nativeStartUpdateTimer();
 
-    public static void callback(String val) {
-        // do stuff
-        Log.i(LOG_TAG, "from JNI: " + val);
-    }
-
     /**
      * Event from C++ sdk after contact was added
      * @param retStatus -> SUCCESS /FAIL

@@ -8,7 +8,7 @@
 #include "contacts.h"
 
 namespace contacts {
-    class CTimerTest {
+    class Updatetimer {
     public:
         void OnStart();
 
@@ -17,8 +17,6 @@ namespace contacts {
         void OnTimeOut();
 
         void Test();
-
-
 
     };
 }

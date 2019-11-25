@@ -16,7 +16,7 @@ public class Initiater {
     public void contactAddedStatus(String status) {
         Log.i(TAG, "contact Added!!");
 
-        // Notify everybody that may be interested.
+        // Notify all listener about new contact added status
         for (ContactListener contactListener : listeners)
             contactListener.onContactAdded(status);
     }
@@ -24,7 +24,7 @@ public class Initiater {
     public void contactUpdated(String newContact, String oldContact) {
         Log.i(TAG, "contact Updated!!");
 
-        // Notify everybody that may be interested.
+        // Notify all listener about on contact update
         for (ContactListener contactListener : listeners)
             contactListener.onContactUpdated(newContact, oldContact);
     }

@@ -9,11 +9,28 @@ namespace contacts {
 
 class Contacts {
  public:
-
+    /**
+     * API to return Version
+     * @return version
+     */
     static std::string getVersion();
+    /**
+     * API to return All list of contacts
+     * @return contact List
+     */
     static std::string getListContacts();
+    /**
+     * API to trigger contacts updated to JNI
+     * based on timer timeout
+     */
     static void updateContacts();
+    /**
+     * API to add new contact in SDK from Java
+     */
     static void addNewContact(std::string);
+    /**
+     * API exposed internally to start timer
+     */
     static void startUpdateTimer();
 
     static std::string createJsonString();
@@ -24,7 +41,6 @@ class Contacts {
  private:
 
     const static std::string kSdkVersion;
-    const static std::string kContactsList;
 };
 
 }

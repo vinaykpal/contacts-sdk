@@ -10,7 +10,7 @@ namespace contacts {
  *   Signals a problem with the execution of a Timer call.
  */
 
-    class CTimerException : public std::exception {
+    class UpdatetimerException : public std::exception {
     public:
         /**
        *   Construct a SharedMemoryException with a explanatory message.
@@ -18,13 +18,13 @@ namespace contacts {
        *   @param bSysMsg true if system message (from strerror(errno))
        *   should be postfixed to the user provided message
        */
-        CTimerException(const std::string &message, bool bSysMsg = false) throw();
+        UpdatetimerException(const std::string &message, bool bSysMsg = false) throw();
 
 
         /** Destructor.
          * Virtual to allow for subclassing.
          */
-        virtual ~CTimerException() throw();
+        virtual ~UpdatetimerException() throw();
 
         /** Returns a pointer to the (constant) error description.
          *  @return A pointer to a \c const \c char*. The underlying memory
@@ -39,15 +39,14 @@ namespace contacts {
         std::string m_sMsg;
     };
 
-    CTimerException::CTimerException(const std::string &sMessage, bool blSysMsg /*= false*/ ) throw()
+    UpdatetimerException::UpdatetimerException(const std::string &sMessage, bool blSysMsg /*= false*/ ) throw()
             : m_sMsg(sMessage) {
         if (blSysMsg) {
             m_sMsg.append(": ");
-            //m_sMsg.append(strerror(errno));
         }
     }
 
-    CTimerException::~CTimerException() throw() {
+    UpdatetimerException::~UpdatetimerException() throw() {
 
     }
 }

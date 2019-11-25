@@ -53,7 +53,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         setContentView(R.layout.activity_contacts);
 
         String version = Contacts.getVersion();
-        Log.i(TAG, "#### getVersion: " + version);
 
         Initiater initiater = new Initiater();
         initiater.addListener(this);
@@ -68,7 +67,7 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     }
 
     @Override
-    public void onContactAdded(String status) {
+    private void onContactAdded(String status) {
         showToast("contact added " + status + " !!");
     }
 
@@ -82,23 +81,27 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     }
 
     private void removeOldContact(String oldContact) {
-        int indxFirstName =-1;
-        int indxLastName =-1;
-        int indxPhone =-1;
+        int indxFirstName = 0;
+        int indxLastName =0 ;
+        int indxPhone =0 ;
+        boolean update = false;
         try {
             JSONObject jsonObject = new JSONObject(oldContact);
 
             if (firstName.contains(jsonObject.optString("first"))) {
                 indxFirstName = firstName.indexOf(jsonObject.optString("first"));
+                update = true;
             }
             if (lastName.contains(jsonObject.optString("last"))) {
                 indxLastName = lastName.indexOf(jsonObject.optString("last"));
+                update = true;
             }
             if (phoneNum.contains(jsonObject.optString("phone"))) {
                 indxPhone = phoneNum.indexOf(jsonObject.optString("phone"));
+                update = true;
             }
 
-            if((indxFirstName == indxLastName) && (indxFirstName == indxPhone)) {
+            if((update == true) &&((indxFirstName == indxLastName) && (indxFirstName == indxPhone)) ){
                 firstName.remove(indxFirstName);
                 lastName.remove(indxLastName);
                 phoneNum.remove(indxPhone);
@@ -111,46 +114,12 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     }
 
     private void addNewContact (String newContact) {
-        int indxFirstName =0;
-        int indxLastName =0;
-        int indxPhone =0;
-        boolean update = false;
         try {
             JSONObject jsonObject = new JSONObject(newContact);
-
-            if (firstName.contains(jsonObject.optString("first"))) {
-                indxFirstName = firstName.indexOf(jsonObject.optString("first"));
-            } else {
-                update = true;
-            }
-            if (lastName.contains(jsonObject.optString("last"))) {
-                indxLastName = lastName.indexOf(jsonObject.optString("last"));
-            } else {
-                update = true;
-            }
-            if (phoneNum.contains(jsonObject.optString("phone"))) {
-                indxPhone = phoneNum.indexOf(jsonObject.optString("phone"));
-            } else {
-                update = true;
-            }
-
-            if((update == true) ) {
-                firstName.add(jsonObject.optString("first"));
-                lastName.add(jsonObject.optString("last"));
-                phoneNum.add(jsonObject.optString("phone"));
-            }
 
             firstName.add(jsonObject.optString("first"));
             lastName.add(jsonObject.optString("last"));
             phoneNum.add(jsonObject.optString("phone"));
-
-            /*if((indxFirstName == indxLastName) && (indxFirstName == indxPhone)) {
-                Log.i(TAG, "contact exists!");
-            } else {
-                firstName.add(jsonObject.optString("first"));
-                lastName.add(jsonObject.optString("last"));
-                phoneNum.add(jsonObject.optString("phone"));
-            }*/
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -181,7 +150,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     /** Called when the user press Add Good contact the button */
     public void addGoodContact(View view)
     {
-        // Do something in response to button click
         Log.i(TAG, "add new Good Contact");
         String newContact = "{\"first\" : \"Zebra\",\"last\" : \"Dog\",\"phone\" : \"+112343433111\"}";
 
@@ -195,7 +163,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     public void addBadContact(View view) {
         // Do something in response to button click
         Log.i(TAG, "add new Wrong Contact");
-        //String newContact = "{\"first\" : \"Zebra\",\"last\" : \"Dog\",\"phone\" : \"+112343433111\"}";
 
         String newContactWrong = "";
         //call native api to add new contact
@@ -250,7 +217,6 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
             Log.e(TAG , e.toString());
         }
     }
-
 
     @Override
     public void onItemClick(View view, int position) {

@@ -1,6 +1,4 @@
-//
-// Created by Z003XHTA on 7/22/2018.
-//
+
 #include "CTimer.h"
 #include "TimerException.h"
 //#include "../../../../../../../../../../../opt/android/android-sdk-linux/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1/ctime"
@@ -76,7 +74,7 @@ void CTimer<T>::StopTimer() {
     {
         try {
             Stop();
-        } catch(contacts::CTimerException& ex)
+        } catch(contacts::UpdatetimerException& ex)
         {
         }
     }

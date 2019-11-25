@@ -15,29 +15,22 @@ import java.util.List;
 public class ContactsRecyclerViewAdapter extends RecyclerView.Adapter<ContactsRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "contacts-sdk";
-    private List<String> mData;
     private ArrayList<ArrayList<String>> contactsData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    ArrayList<String> firstNameList; //= contactsData.get(0);
-    ArrayList<String> lasstNameList ;//= contactsData.get(1);
-    ArrayList<String> phoneList;// = contactsData.get(2);
+    ArrayList<String> firstNameList;
+    ArrayList<String> lasstNameList ;
+    ArrayList<String> phoneList;
 
     // data is passed into the constructor
     ContactsRecyclerViewAdapter(Context context,ArrayList<ArrayList<String>> data) {
         this.mInflater = LayoutInflater.from(context);
-        //this.mData = data;
         this.contactsData = data;
 
         firstNameList = contactsData.get(0);
         lasstNameList = contactsData.get(1);
         phoneList = contactsData.get(2);
-
-        Log.i(TAG, "firstName ArrayList " + firstNameList);
-        Log.i(TAG, "lastName ArrayList " + lasstNameList);
-        Log.i(TAG, "phoneNum ArrayList " + phoneList);
-
     }
 
     // inflates the row layout from xml when needed
