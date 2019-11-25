@@ -67,7 +67,7 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
     }
 
     @Override
-    private void onContactAdded(String status) {
+    public void onContactAdded(String status) {
         showToast("contact added " + status + " !!");
     }
 
@@ -223,7 +223,7 @@ public class ContactsActivity extends AppCompatActivity implements ContactsRecyc
         showToast(adapter.getItem(position).get(0) + " " + adapter.getItem(position).get(1) +" number is " + adapter.getItem(position).get(2));
     }
 
-    public void showToast(String msg) {
+    private void showToast(String msg) {
         Toast.makeText(this,  msg, Toast.LENGTH_SHORT).show();
     }
 
